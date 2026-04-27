@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>賓總汽車 Sunny 松霖 | 桃園外匯精選車</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --gold: #A88441;
+    --gold-lt: #CDA864;
+    --gold-dim: rgba(168,132,65,0.18);
+    --dark: #0E0E10;
+    --dark2: #161618;
+    --dark3: #1E1E22;
+    --text: #F2EDE4;
+    --text-dim: #9A9490;
+    --line: rgba(168,132,65,0.28);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans TC', sans-serif; background: var(--dark); color: var(--text); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(14,14,16,0.9);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-brand { display: flex; flex-direction: column; line-height: 1.2; }
+  .nav-brand-main { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 300; letter-spacing: 0.06em; }
+  .nav-brand-sub { font-size: 0.62rem; font-weight: 400; letter-spacing: 0.28em; color: var(--gold); text-transform: uppercase; margin-top: 1px; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 300; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 0.55rem 1.5rem; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: all 0.3s; font-family: inherit; text-decoration: none; display: inline-block; }
+  .nav-cta:hover { background: var(--gold); color: var(--dark); }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 8rem 4rem 5rem; }
+  .hero-bg { position: absolute; inset: 0; background: linear-gradient(140deg, #0E0E10 0%, #130F09 55%, #0E0E10 100%); }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.035;
+    background-image: linear-gradient(rgba(168,132,65,1) 1px, transparent 1px), linear-gradient(90deg, rgba(168,132,65,1) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+  .hero-glow { position: absolute; top: 20%; right: 15%; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(168,132,65,0.06) 0%, transparent 70%); pointer-events: none; }
+  .hero-content { position: relative; z-index: 2; max-width: 680px; }
+  .hero-eyebrow { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; font-size: 0.68rem; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; }
+  .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+  .hero-eyebrow::after { content: ''; width: 56px; height: 1px; background: var(--gold); }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 6.5vw, 5.2rem); font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 0.6rem; }
+  .hero h1 em { font-style: italic; color: var(--gold-lt); }
+  .hero-tagline { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 300; font-style: italic; color: var(--text-dim); margin-bottom: 1.8rem; letter-spacing: 0.05em; }
+  .hero-sub { font-size: 0.92rem; font-weight: 300; line-height: 1.95; color: var(--text-dim); max-width: 500px; margin-bottom: 3rem; }
+  .hero-actions { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--gold); color: var(--dark); padding: 1rem 2.5rem; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; transition: all 0.3s; font-family: inherit; display: inline-flex; align-items: center; gap: 0.8rem; }
+  .btn-primary:hover { background: var(--gold-lt); }
+  .btn-secondary { color: var(--text-dim); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 300; padding-bottom: 3px; border-bottom: 1px solid var(--line); transition: all 0.3s; }
+  .btn-secondary:hover { color: var(--gold); border-color: var(--gold); }
+  .hero-stats { display: flex; gap: 3.5rem; margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--line); }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: var(--gold); line-height: 1; }
+  .stat-label { font-size: 0.63rem; letter-spacing: 0.2em; color: var(--text-dim); text-transform: uppercase; margin-top: 0.35rem; }
+
+  /* SECTION BASE */
+  section { padding: 7rem 4rem; }
+  .section-tag { display: inline-flex; align-items: center; gap: 0.8rem; font-size: 0.63rem; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+  .section-tag::before { content: ''; width: 22px; height: 1px; background: var(--gold); }
+  h2.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 300; line-height: 1.1; margin-bottom: 1.5rem; }
+  .section-desc { font-size: 0.9rem; line-height: 1.95; color: var(--text-dim); }
+  .gold-line { width: 44px; height: 2px; background: var(--gold); margin-bottom: 2rem; }
+
+  /* ABOUT */
+  .about { background: var(--dark2); }
+  .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+  .years-badge { display: inline-flex; flex-direction: column; align-items: center; border: 1px solid var(--line); padding: 1.5rem 2rem; margin-bottom: 2.5rem; }
+  .years-num { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: var(--gold); line-height: 1; }
+  .years-label { font-size: 0.65rem; letter-spacing: 0.2em; color: var(--text-dim); text-transform: uppercase; margin-top: 0.4rem; }
+  .about-box { background: var(--dark3); border: 1px solid var(--line); padding: 2.5rem; position: relative; }
+  .about-box::before { content: ''; position: absolute; top: -1px; left: -1px; width: 36px; height: 36px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+  .about-box::after { content: ''; position: absolute; bottom: -1px; right: -1px; width: 36px; height: 36px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+  .about-feature { margin-bottom: 1.8rem; padding-bottom: 1.8rem; border-bottom: 1px solid rgba(168,132,65,0.1); }
+  .about-feature:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .feature-title { font-size: 0.88rem; font-weight: 500; color: var(--gold-lt); margin-bottom: 0.5rem; letter-spacing: 0.04em; }
+  .feature-desc { font-size: 0.8rem; line-height: 1.85; color: var(--text-dim); font-weight: 300; }
+
+  /* ORIGINS */
+  .origins { background: var(--dark); }
+  .origins-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; margin-top: 4rem; background: var(--line); }
+  .origin-card { background: var(--dark2); padding: 2.8rem 2rem; position: relative; overflow: hidden; transition: background 0.4s; cursor: default; }
+  .origin-card:hover { background: var(--dark3); }
+  .origin-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.4s; transform-origin: left; }
+  .origin-card:hover::before { transform: scaleX(1); }
+  .origin-flag { font-size: 2.2rem; margin-bottom: 1.2rem; }
+  .origin-country { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-weight: 300; color: var(--gold-lt); margin-bottom: 0.5rem; }
+  .origin-desc { font-size: 0.78rem; line-height: 1.75; color: var(--text-dim); font-weight: 300; }
+  .origin-badge { margin-top: 1.5rem; display: inline-block; font-size: 0.58rem; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; border: 1px solid var(--gold-dim); padding: 0.28rem 0.75rem; }
+
+  /* SERVICES */
+  .services { background: var(--dark2); }
+  .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; margin-top: 4rem; background: var(--line); }
+  .service-card { background: var(--dark2); padding: 3rem 2.5rem; transition: background 0.4s; position: relative; }
+  .service-card:hover { background: var(--dark3); }
+  .service-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--gold-dim); line-height: 1; margin-bottom: 1.5rem; }
+  .service-title { font-size: 1rem; font-weight: 500; margin-bottom: 1rem; color: var(--text); }
+  .service-desc { font-size: 0.8rem; line-height: 1.85; color: var(--text-dim); font-weight: 300; }
+  .service-detail { margin-top: 1.2rem; font-size: 0.72rem; letter-spacing: 0.08em; color: var(--gold); border-top: 1px solid var(--line); padding-top: 1rem; }
+
+  /* PROCESS */
+  .process { background: var(--dark); }
+  .process-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; align-items: start; }
+  .process-steps { display: flex; flex-direction: column; gap: 0; margin-top: 1rem; }
+  .step { display: flex; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid rgba(168,132,65,0.1); align-items: flex-start; }
+  .step:last-child { border-bottom: none; }
+  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--gold); min-width: 2.5rem; line-height: 1; margin-top: 2px; }
+  .step-content { flex: 1; }
+  .step-title { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem; }
+  .step-desc { font-size: 0.78rem; line-height: 1.8; color: var(--text-dim); font-weight: 300; }
+
+  /* GARAGE */
+  .garage { background: var(--dark2); }
+  .garage-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .garage-brands { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.5rem; }
+  .brand-pill { border: 1px solid var(--line); padding: 0.6rem 1.4rem; font-size: 0.75rem; letter-spacing: 0.12em; color: var(--text-dim); font-weight: 300; transition: all 0.3s; cursor: default; }
+  .brand-pill:hover { border-color: var(--gold); color: var(--gold-lt); }
+  .garage-highlight { background: var(--dark3); border: 1px solid var(--line); padding: 2.5rem; position: relative; }
+  .garage-highlight::before { content: ''; position: absolute; top: -1px; left: -1px; width: 36px; height: 36px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+  .garage-item { display: flex; align-items: flex-start; gap: 1.2rem; margin-bottom: 1.8rem; padding-bottom: 1.8rem; border-bottom: 1px solid rgba(168,132,65,0.1); }
+  .garage-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .garage-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 6px; }
+  .garage-item-text { font-size: 0.82rem; line-height: 1.8; color: var(--text-dim); font-weight: 300; }
+  .garage-item-title { font-size: 0.9rem; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; }
+
+  /* CONTACT */
+  .contact { background: var(--dark); }
+  .contact-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 6rem; align-items: start; }
+  .contact-info-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 0; }
+  .contact-item { display: flex; align-items: flex-start; gap: 1.5rem; padding: 1.8rem 0; border-bottom: 1px solid rgba(168,132,65,0.1); }
+  .contact-item:first-child { padding-top: 0; }
+  .contact-icon { width: 2.4rem; height: 2.4rem; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .contact-icon svg { width: 13px; height: 13px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+  .contact-label { font-size: 0.62rem; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.4rem; }
+  .contact-value { font-size: 0.95rem; font-weight: 300; color: var(--text); }
+  .contact-value a { color: inherit; text-decoration: none; }
+  .contact-right { background: var(--dark3); padding: 3rem; border: 1px solid var(--line); position: relative; }
+  .contact-right::before { content: ''; position: absolute; top: -1px; left: -1px; width: 46px; height: 46px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+  .contact-cta-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; margin-bottom: 0.8rem; line-height: 1.2; }
+  .contact-cta-desc { font-size: 0.83rem; line-height: 1.85; color: var(--text-dim); margin-bottom: 2.5rem; }
+  .contact-buttons { display: flex; flex-direction: column; gap: 1rem; }
+  .cta-btn { display: flex; align-items: center; justify-content: center; gap: 1rem; padding: 1.1rem 2rem; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 400; transition: all 0.3s; font-family: inherit; }
+  .cta-line { background: var(--gold); color: var(--dark); }
+  .cta-line:hover { background: var(--gold-lt); }
+  .cta-phone { background: transparent; color: var(--text); border: 1px solid var(--line); }
+  .cta-phone:hover { border-color: var(--gold); color: var(--gold); }
+  .contact-note { margin-top: 1.5rem; font-size: 0.72rem; color: var(--text-dim); line-height: 1.7; letter-spacing: 0.04em; }
+
+  /* FOOTER */
+  footer { padding: 3rem 4rem; border-top: 1px solid var(--line); background: var(--dark2); }
+  .footer-inner { display: flex; align-items: center; justify-content: space-between; }
+  .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 300; letter-spacing: 0.1em; }
+  .footer-tagline { font-size: 0.68rem; letter-spacing: 0.14em; color: var(--gold); font-weight: 300; margin-top: 0.3rem; }
+  .footer-copy { font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.05em; line-height: 1.8; text-align: right; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { animation: fadeUp 0.9s ease forwards; }
+  .d1 { animation-delay: 0.15s; opacity: 0; }
+  .d2 { animation-delay: 0.3s; opacity: 0; }
+  .d3 { animation-delay: 0.45s; opacity: 0; }
+  .d4 { animation-delay: 0.6s; opacity: 0; }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .hero-stats { flex-wrap: wrap; gap: 2rem; }
+    .about-inner, .origins-grid, .services-grid, .process-inner, .garage-inner, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .origins-grid { grid-template-columns: 1fr 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; gap: 1.2rem; text-align: center; }
+    .footer-copy { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <span class="nav-brand-main">賓總汽車</span>
+    <span class="nav-brand-sub">Sunny 呂松霖 &nbsp;·&nbsp; 你的助理</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#origins">引進來源</a></li>
+    <li><a href="#services">服務項目</a></li>
+    <li><a href="#garage">保養廠</a></li>
+    <li><a href="#contact">聯繫我們</a></li>
+  </ul>
+  <a class="nav-cta" href="https://line.me/ti/p/A5xH5_X4Oz" target="_blank">LINE 私訊</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow fade-up">桃園在地車商 &nbsp;·&nbsp; 三十餘年</div>
+    <h1 class="fade-up d1">讓好車<br>找到<em>對的人</em></h1>
+    <p class="hero-tagline fade-up d2">你的助理終究為你</p>
+    <p class="hero-sub fade-up d3">
+      賓總汽車在桃園深耕三十餘年，從嚴選車輛進口到後續保養服務，全程由 Sunny 親自服務。每台引進車附 Carfax 文件，保證無事故。
+    </p>
+    <div class="hero-actions fade-up d3">
+      <a class="btn-primary" href="https://line.me/ti/p/A5xH5_X4Oz" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 448 512" fill="currentColor"><path d="M272.1 204.2v71.1c0 1.8-1.4 3.2-3.2 3.2h-11.4c-1.1 0-2.1-.6-2.6-1.5l-32.6-44v42.3c0 1.8-1.4 3.2-3.2 3.2h-11.4c-1.8 0-3.2-1.4-3.2-3.2v-71.1c0-1.8 1.4-3.2 3.2-3.2h11.4c1.1 0 2.1.6 2.6 1.5l32.6 44v-42.3c0-1.8 1.4-3.2 3.2-3.2h11.4c1.8-.1 3.2 1.3 3.2 3.1zm-82-3.2h-11.4c-1.8 0-3.2 1.4-3.2 3.2v71.1c0 1.8 1.4 3.2 3.2 3.2h11.4c1.8 0 3.2-1.4 3.2-3.2v-71.1c0-1.7-1.4-3.2-3.2-3.2zm-27.5 59.6h-31.1v-56.4c0-1.8-1.4-3.2-3.2-3.2h-11.4c-1.8 0-3.2 1.4-3.2 3.2v71.1c0 .9.3 1.6.9 2.2.6.5 1.3.9 2.2.9h46c1.8 0 3.2-1.4 3.2-3.2v-11.4c0-1.7-1.4-3.2-3.4-3.2zm191.6-59.6h-46c-1.7 0-3.2 1.4-3.2 3.2v71.1c0 1.7 1.4 3.2 3.2 3.2h46c1.8 0 3.2-1.4 3.2-3.2v-11.4c0-1.8-1.4-3.2-3.2-3.2h-31.1v-12h31.1c1.8 0 3.2-1.4 3.2-3.2v-11.4c0-1.8-1.4-3.2-3.2-3.2h-31.1v-12h31.1c1.8 0 3.2-1.4 3.2-3.2v-11.4c0-1.7-1.4-3.2-3.2-3.2zM448 113.7V399c-.1 44.8-36.8 81.1-81.7 81H81c-44.8-.1-81.1-36.9-81-81.7V113c.1-44.8 36.9-81.1 81.7-81H367c44.8.1 81.1 36.8 81 81.7zm-61.6 122.6c0-73-73.2-132.4-163.1-132.4-89.9 0-163.1 59.4-163.1 132.4 0 65.4 58 120.2 136.4 130.6 19.1 4.1 16.9 11.1 12.6 36.8-.7 4.1-3.3 16.1 14.1 8.8 17.4-7.3 93.9-55.3 128.2-94.7 23.6-26 34.9-52.3 34.9-81.5z"/></svg>
+        LINE 私訊看車
+      </a>
+      <a class="btn-secondary" href="tel:0926530660">直撥 0926-530-660</a>
+    </div>
+    <div class="hero-stats fade-up d4">
+      <div class="stat"><div class="stat-num">30<span style="font-size:1.4rem">+</span></div><div class="stat-label">年桃園在地</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">直引國家</div></div>
+      <div class="stat"><div class="stat-num">0</div><div class="stat-label">事故車輛</div></div>
+      <div class="stat"><div class="stat-num">1<span style="font-size:1.4rem">對</span>1</div><div class="stat-label">Sunny 親接</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="section-tag">關於我們</div>
+      <h2 class="section-title">你的助理，<br>終究為你</h2>
+      <div class="gold-line"></div>
+      <p class="section-desc">
+        賓總汽車創立三十餘年，在桃園市桃園區經國路深耕在地。Sunny 呂松霖從助理做起，2021 年正式成為銷售顧問，以「成為你的專屬助理」為出發點，替每位顧客思考、評估、服務。
+      </p>
+      <p class="section-desc" style="margin-top:1.2rem;">
+        從嚴選車輛進口到後續保養服務，全程由 Sunny 親自陪同。不交由客服轉介，不推銷，找到真正適合你的車才算完成任務。
+      </p>
+      <p class="section-desc" style="margin-top:1.2rem; color: var(--gold-lt); font-style: italic;">
+        「買車、保養、代辦車款，讓松霖成為你的助理為您服務。」
+      </p>
+    </div>
+    <div>
+      <div class="about-box">
+        <div class="about-feature">
+          <div class="feature-title">Carfax 文件保證</div>
+          <div class="feature-desc">不販售、不引進任何事故車輛，每台外匯車均提供 Carfax 報告，車輛背景清楚透明，買得安心。</div>
+        </div>
+        <div class="about-feature">
+          <div class="feature-title">三十餘年在地信譽</div>
+          <div class="feature-desc">賓總汽車扎根桃園超過三十年，銷售上千台車，口碑與信譽是最好的背書。</div>
+        </div>
+        <div class="about-feature">
+          <div class="feature-title">Sunny 親自一對一服務</div>
+          <div class="feature-desc">從詢問到交車，全程由 Sunny 親自接洽，不轉手、不催促，你有問題他在。</div>
+        </div>
+        <div class="about-feature">
+          <div class="feature-title">自有保養廠，後續有人顧</div>
+          <div class="feature-desc">賓總自有保養廠與資深技師團隊，買車後的保養維修同樣全程照顧，不用擔心找不到人。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORIGINS -->
+<section class="origins" id="origins">
+  <div style="text-align:center; max-width:580px; margin:0 auto;">
+    <div class="section-tag" style="justify-content:center;">引進來源</div>
+    <h2 class="section-title">四個市場，<br>直接引進</h2>
+    <p class="section-desc" style="margin:0 auto;">長年深耕美國、加拿大、德國、日本四個市場，熟悉各地車況標準與行情，讓每次引進都有所憑據。</p>
+  </div>
+  <div class="origins-grid">
+    <div class="origin-card">
+      <div class="origin-flag">🇺🇸</div>
+      <div class="origin-country">美國</div>
+      <div class="origin-desc">車種選擇廣，高端配備車型豐富，特殊規格與限定版本的首選市場。</div>
+      <div class="origin-badge">USA</div>
+    </div>
+    <div class="origin-card">
+      <div class="origin-flag">🇨🇦</div>
+      <div class="origin-country">加拿大</div>
+      <div class="origin-desc">市場成熟，文件規範完整，乾燥寒帶氣候出產的車輛底盤狀況普遍穩定。</div>
+      <div class="origin-badge">Canada</div>
+    </div>
+    <div class="origin-card">
+      <div class="origin-flag">🇰🇷</div>
+      <div class="origin-country">韓國</div>
+      <div class="origin-desc">部分車型規格與台灣接近，保養紀錄完整，性價比突出，值得考慮的選項。</div>
+      <div class="origin-badge">Korea</div>
+    </div>
+    <div class="origin-card">
+      <div class="origin-flag">🇯🇵</div>
+      <div class="origin-country">日本</div>
+      <div class="origin-desc">以保養精細著稱，低里程車況優良，在意使用感與細節質感的首選。</div>
+      <div class="origin-badge">Japan</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div style="text-align:center; max-width:580px; margin:0 auto;">
+    <div class="section-tag" style="justify-content:center;">服務項目</div>
+    <h2 class="section-title">三種方式，<br>找到你的車</h2>
+    <p class="section-desc" style="margin:0 auto;">現車、接單、保養一條龍，依照你的需求選擇最合適的方式。</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-title">在店庫存車</div>
+      <div class="service-desc">目前在店的精選外匯車款，可直接預約來桃園實車賞看，所有規格與文件現場確認，喜歡就帶走。</div>
+      <div class="service-detail">桃園市桃園區經國路 376 號</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-title">接單引進服務</div>
+      <div class="service-desc">量身為你在四個市場挑選最符合需求的車款。特殊顏色、豐富配備、漂亮里程，或只需要特定幾項，都能精準篩選，選擇接單引進才是真正為你省。</div>
+      <div class="service-detail">依需求媒合，附完整 Carfax 文件</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-title">代辦引進顧問</div>
+      <div class="service-desc">不確定要從哪個國家引進最划算？Sunny 熟悉各市場規格差異與進口成本，幫你分析哪個選擇對你最有利，再決定也不遲。</div>
+      <div class="service-detail">LINE 私訊說明需求即可</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="process-inner">
+    <div>
+      <div class="section-tag">服務流程</div>
+      <h2 class="section-title">從詢問到交車，<br>沒有複雜步驟</h2>
+      <div class="gold-line"></div>
+      <p class="section-desc">告訴我你的需求，剩下的交給 Sunny。</p>
+    </div>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <div class="step-title">LINE 私訊或來電</div>
+          <div class="step-desc">告訴 Sunny 你的預算、想要的車型、用途，不需要準備什麼，直接聊就好。</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <div class="step-title">車源媒合與確認</div>
+          <div class="step-desc">根據需求在四個市場搜尋合適車源，確認車況、文件與 Carfax 報告，無事故才推薦。</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <div class="step-title">完整資訊透明提供</div>
+          <div class="step-desc">提供照片、規格、歷史紀錄，讓你在看車前已掌握所有細節，沒有驚喜也沒有隱瞞。</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <div class="step-title">約來桃園實車賞看</div>
+          <div class="step-desc">安排方便的時間來桃園現場看車，Sunny 陪同說明每個細節，確認無誤再談。</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <div class="step-title">完成交車</div>
+          <div class="step-desc">所有手續清楚透明，交車後後續保養也有賓總自有保養廠繼續照顧。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GARAGE -->
+<section class="garage" id="garage">
+  <div class="garage-inner">
+    <div>
+      <div class="section-tag">自有保養廠</div>
+      <h2 class="section-title">買了之後，<br>還有人顧</h2>
+      <div class="gold-line"></div>
+      <p class="section-desc">
+        賓總汽車自有保養廠創立超過三十年，擁有經驗豐富的技師團隊，從德系到英系豪華品牌都能處理。買車之後不用另外找保養廠，一條龍服務到底。
+      </p>
+      <div class="garage-brands">
+        <div class="brand-pill">Mercedes-Benz</div>
+        <div class="brand-pill">BMW</div>
+        <div class="brand-pill">Porsche</div>
+        <div class="brand-pill">Bentley</div>
+        <div class="brand-pill">Lexus</div>
+        <div class="brand-pill">其他歐系車款</div>
+      </div>
+    </div>
+    <div class="garage-highlight">
+      <div class="garage-item">
+        <div class="garage-dot"></div>
+        <div>
+          <div class="garage-item-title">到府牽車服務</div>
+          <div class="garage-item-text">不方便開車來保養？賓總提供到府牽車服務，讓你在家等，不影響你的行程。</div>
+        </div>
+      </div>
+      <div class="garage-item">
+        <div class="garage-dot"></div>
+        <div>
+          <div class="garage-item-title">資深技師團隊</div>
+          <div class="garage-item-text">三十年累積的技師經驗，熟悉各品牌車款特性，不猜測、不亂報，做該做的。</div>
+        </div>
+      </div>
+      <div class="garage-item">
+        <div class="garage-dot"></div>
+        <div>
+          <div class="garage-item-title">保養維修一站解決</div>
+          <div class="garage-item-text">定期保養、修件更換、問題診斷，全在賓總自有保養廠處理，省去奔波時間。</div>
+        </div>
+      </div>
+      <div class="garage-item">
+        <div class="garage-dot"></div>
+        <div>
+          <div class="garage-item-title">桃園在地，交通方便</div>
+          <div class="garage-item-text">位於桃園市桃園區經國路 376 號，交通便利，預約制，不讓你空等。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-tag">聯繫我們</div>
+      <h2 class="section-title">有任何想<br>解決的事情，<br>來訊息就好</h2>
+      <div class="gold-line"></div>
+      <p class="section-desc">不管是問在店車、討論接單引進、還是保養預約，Sunny 親自回覆，不繞彎。</p>
+      <div class="contact-info-list">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 10.82 19.79 19.79 0 01.05 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">手機</div>
+            <div class="contact-value"><a href="tel:0926530660">0926-530-660</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">LINE</div>
+            <div class="contact-value">Lin530660</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">賞車地點</div>
+            <div class="contact-value" style="font-size:0.85rem;">桃園市桃園區經國路 376 號</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Facebook</div>
+            <div class="contact-value" style="font-size:0.85rem;">搜尋「賓總汽車 Sunny」</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="contact-cta-title">讓松霖成為<br>你的助理。</div>
+      <p class="contact-cta-desc">
+        說說你的需求，Sunny 來幫你找。不催促、不推銷，找到對的車才算完成工作。
+      </p>
+      <div class="contact-buttons">
+        <a class="cta-btn cta-line" href="https://line.me/ti/p/A5xH5_X4Oz" target="_blank">輕按即加入 LINE 好友</a>
+        <a class="cta-btn cta-phone" href="tel:0926530660">直撥 0926-530-660</a>
+      </div>
+      <p class="contact-note">LINE ID：Lin530660 &nbsp;|&nbsp; line.me/ti/p/A5xH5_X4Oz</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">賓總汽車</div>
+      <div class="footer-tagline">Sunny 呂松霖，你的助理終究為你</div>
+    </div>
+    <div class="footer-copy">
+      桃園市桃園區經國路 376 號<br>
+      0926-530-660 &nbsp;|&nbsp; LINE: Lin530660
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
