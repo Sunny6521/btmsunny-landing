@@ -1,0 +1,45 @@
+# 賓總汽車 Sunny landing page — 歡迎所有搜尋引擎與 AI 爬蟲
+User-agent: *
+Allow: /
+
+# Google 搜尋
+User-agent: Googlebot
+Allow: /
+
+# Google Gemini / AI 訓練
+User-agent: Google-Extended
+Allow: /
+
+# OpenAI ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Common Crawl（多數 AI 模型的訓練資料來源）
+User-agent: CCBot
+Allow: /
+
+# Microsoft Bing / Copilot
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://sunny6521.github.io/btmsunny-landing/sitemap.xml
